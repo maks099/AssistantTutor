@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AssistantTutor</string>
+    <string name="courses">Courses</string>
+    <string name="students">Students</string>
+    <string name="lessons">Lessons</string>
+
+    <string name="emptyList">Empty list</string>
+    <string name="enterCourseName">Enter course name</string>
+    <string name="enterCourseDesc">Enter course description</string>
+    <string name="enterTitlePlease">Please, enter title</string>
+    <string name="errorCourseAdding">Error occured - try again</string>
+</resources>
