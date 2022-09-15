@@ -9,8 +9,9 @@
         <entry key="app/src/main/res/layout/activity_planning.xml" value="0.1921875" />
         <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_lessons.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_students.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_students.xml" value="0.18" />
         <entry key="app/src/main/res/layout/simple_list_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/student_list_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/text_view_list_item.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.20677083333333332" />
       </map>

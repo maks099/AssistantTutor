@@ -79,6 +79,7 @@ public class PlanningActivity extends AppCompatActivity {
             else if(db.removeDate(dates.get(itemPos).getId()) != -1){
                 String item = binding.lstDates.getItemAtPosition(itemPos).toString();
                 adapter.remove(item);
+                dates.remove(itemPos);
                 binding.lstDates.setAdapter(adapter);
                 itemPos = -1;
             }

@@ -12,4 +12,8 @@
     <string name="saveCoursePlease">Please, save the course</string>
     <string name="duplicateDate">"The date now is in list "</string>
     <string name="pickDatePlease">Pick date for deleting</string>
+    <string name="enterNewStudent">Enter new student name</string>
+    <string name="yes">Yes</string>
+    <string name="enterStudentNamePlease">Enter name of the student</string>
+    <string name="cancel">Cancel</string>
 </resources>

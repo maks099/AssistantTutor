@@ -10,17 +10,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.loader.content.CursorLoader;
 import com.example.assistanttutor.EditCourseActivity;
 import com.example.assistanttutor.R;
-import com.example.assistanttutor.adapters.NewCursorAdapter;
 import com.example.assistanttutor.database.DBManager;
 import com.example.assistanttutor.database.objects.Course;
 import com.example.assistanttutor.databinding.FragmentCoursesBinding;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class CoursesFragment extends Fragment {
