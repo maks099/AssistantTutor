@@ -95,4 +95,25 @@ public class DBManager {
         contentValues.put("name", newStudentName);
         return (int) database.insert("students", null, contentValues);
     }
+
+    public Cursor fetchStudentsOnCourse(String courseTitle) {
+        String [] columns = new String[] {"_id", "name"};
+        Cursor cursor = database.query("records", columns, "title = ?", new String[]{courseTitle}, null, null, null);
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+
+    public int removeStudentOnCourse(String studentName, String courseTitle) {
+        return database.delete("records", "name = ? AND title = ?", new String[]{studentName, courseTitle});
+    }
+
+    public int insertStudentToCourse(String newStudentName, String courseTitle) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title", courseTitle);
+        contentValues.put("name", newStudentName);
+        return (int) database.insert("records", null, contentValues);
+    }
 }

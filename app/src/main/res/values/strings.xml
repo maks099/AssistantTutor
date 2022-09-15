@@ -8,7 +8,7 @@
     <string name="enterCourseName">Enter course name</string>
     <string name="enterCourseDesc">Enter course description</string>
     <string name="enterTitlePlease">Please, enter title</string>
-    <string name="errorCourseAdding">Error occured - try again</string>
+    <string name="errorCourseAdding">Error occurred - try again</string>
     <string name="saveCoursePlease">Please, save the course</string>
     <string name="duplicateDate">"The date now is in list "</string>
     <string name="pickDatePlease">Pick date for deleting</string>
@@ -16,4 +16,8 @@
     <string name="yes">Yes</string>
     <string name="enterStudentNamePlease">Enter name of the student</string>
     <string name="cancel">Cancel</string>
+    <string name="calendar">Calendar plan</string>
+    <string name="error">Error occurred</string>
+    <string name="noStudents">There are no students</string>
+    <string name="errorStudentNowIs">The student is in list now</string>
 </resources>

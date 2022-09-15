@@ -37,6 +37,15 @@ public class EditCourseActivity extends AppCompatActivity {
         saveCourse();
         deleteCourse();
         onCalendarPlanning();
+        onStudentsOnCourse();
+    }
+
+    private void onStudentsOnCourse() {
+        binding.btnStudentsOnCourse.setOnClickListener(e -> {
+            Intent intent = new Intent(getApplicationContext(), StudentsOnCourseActivity.class);
+            intent.putExtra("courseTitle", course.getTitle());
+            startActivity(intent);
+        });
     }
 
     private void onCalendarPlanning() {

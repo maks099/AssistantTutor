@@ -12,9 +12,10 @@
         android:layout_weight="1"
         toolse:text="text"/>
 
-    <Button
+    <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnDeleteStudent"
-            toolse:text="delete"/>
+            android:src="@drawable/ic_delete"
+          />
 </LinearLayout>

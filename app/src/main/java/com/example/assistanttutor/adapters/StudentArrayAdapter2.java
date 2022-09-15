@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -16,17 +15,19 @@ import com.example.assistanttutor.database.DBSingletone;
 import com.example.assistanttutor.database.objects.Student;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class StudentArrayAdapter extends ArrayAdapter<Student> {
+public class StudentArrayAdapter2 extends ArrayAdapter<String> {
 
-    private ArrayList<Student> students;
-    private final DBManager db;
+    private ArrayList<String> students;
+    private String courseTitle;
 
-    public StudentArrayAdapter(@NonNull Context context, @NonNull ArrayList<Student> objects) {
+    private DBManager db;
+
+    public StudentArrayAdapter2(@NonNull Context context, ArrayList<String> objects, String courseTitle) {
         super(context, 0, objects);
-        students = objects;
-        db = DBSingletone.getInstance(getContext()).getDbManager();
+        this.courseTitle = courseTitle;
+        this.students = objects;
+        db = DBSingletone.getInstance(context).getDbManager();
     }
 
     @NonNull
@@ -38,11 +39,11 @@ public class StudentArrayAdapter extends ArrayAdapter<Student> {
         }
 
         TextView txtStudentName = currentItemView.findViewById(R.id.txtStudent);
-        txtStudentName.setText(students.get(position).getName());
+        txtStudentName.setText(students.get(position));
 
         ImageButton btnDeleteStudent = currentItemView.findViewById(R.id.btnDeleteStudent);
         btnDeleteStudent.setOnClickListener(e -> {
-            int result = db.removeStudent(students.get(position).getId());
+            int result = db.removeStudentOnCourse(students.get(position), courseTitle);
             if(result != -1){
                 notifyDataSetChanged();
                 students.remove(position);
