@@ -10,6 +10,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AssistantTutor">
         <activity
+                android:name=".PlanningActivity"
+                android:exported="true"/>
+        <activity
                 android:name=".EditCourseActivity"
                 android:exported="true"/>
         <activity

@@ -1,5 +1,6 @@
 package com.example.assistanttutor;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ public class EditCourseActivity extends AppCompatActivity {
 
     private ActivityEditCourseBinding binding;
     private int courseId = -1;
+    private Course course;
     DBManager db;
 
 
@@ -21,7 +23,7 @@ public class EditCourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding =  ActivityEditCourseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Course course = getIntent().getParcelableExtra("course");
+        course = getIntent().getParcelableExtra("course");
         if(course != null){
             courseId = course.getId();
             binding.edtCourseTitle.setText(course.getTitle());
@@ -34,6 +36,19 @@ public class EditCourseActivity extends AppCompatActivity {
 
         saveCourse();
         deleteCourse();
+        onCalendarPlanning();
+    }
+
+    private void onCalendarPlanning() {
+        binding.btnCalendarPlanning.setOnClickListener(e -> {
+            if(course == null){
+                Toast.makeText(getApplicationContext(), getString(R.string.saveCoursePlease), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Intent intent = new Intent(this, PlanningActivity.class);
+            intent.putExtra("courseTitle", course.getTitle());
+            startActivity(intent);
+        });
     }
 
     private void deleteCourse() {

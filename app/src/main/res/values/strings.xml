@@ -9,4 +9,7 @@
     <string name="enterCourseDesc">Enter course description</string>
     <string name="enterTitlePlease">Please, enter title</string>
     <string name="errorCourseAdding">Error occured - try again</string>
+    <string name="saveCoursePlease">Please, save the course</string>
+    <string name="duplicateDate">"The date now is in list "</string>
+    <string name="pickDatePlease">Pick date for deleting</string>
 </resources>

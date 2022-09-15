@@ -66,10 +66,8 @@ public class CoursesFragment extends Fragment {
                         cursor.getString(2),
                         cursor.getString(3));
                 course.setId(cursor.getInt(0));
-                System.out.println(cursor.getInt(0) + " ------------------");
                 courses.add(course);
             } while (cursor.moveToNext());
-            System.out.println(Arrays.toString(cursor.getColumnNames()));;
         }
 
         simpleCursorAdapter = new SimpleCursorAdapter(
@@ -80,6 +78,7 @@ public class CoursesFragment extends Fragment {
                 new int[]{R.id.courseTitle},
                 0
         );
+
         simpleCursorAdapter.notifyDataSetChanged();
         listView.setAdapter(simpleCursorAdapter);
     }

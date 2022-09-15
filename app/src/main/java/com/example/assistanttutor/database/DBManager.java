@@ -54,7 +54,26 @@ public class DBManager {
     }
 
     public long removeCourse(int courseId) {
-        System.out.println(courseId + " ****************************");
         return database.delete("courses", "_id = ?", new String[]{courseId + ""});
+    }
+
+    public long addDateToCourse(String courseTitle, String newDate) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title", courseTitle);
+        contentValues.put("date_", newDate);
+        return database.insert("planning", null, contentValues);
+    }
+
+    public Cursor fetchDates() {
+        String [] columns = new String[] {"_id", "title", "date_"};
+        Cursor cursor = database.query("planning", columns, null, null, null, null, "date_");
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    public long removeDate(int id) {
+        return database.delete("planning", "_id = ?", new String[]{id + ""});
     }
 }
