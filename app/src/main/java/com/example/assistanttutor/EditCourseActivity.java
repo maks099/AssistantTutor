@@ -28,8 +28,11 @@ public class EditCourseActivity extends AppCompatActivity {
             courseId = course.getId();
             binding.edtCourseTitle.setText(course.getTitle());
             binding.edtDescription.setText(course.getDescription());
+            setTitle(getString(R.string.editCourse));
         } else {
             binding.btnDelete.setVisibility(View.INVISIBLE);
+            setTitle(getString(R.string.createCourse));
+
         }
         db = DBSingletone.getInstance(getApplicationContext()).getDbManager();
 
@@ -43,7 +46,7 @@ public class EditCourseActivity extends AppCompatActivity {
     private void onStudentsOnCourse() {
         binding.btnStudentsOnCourse.setOnClickListener(e -> {
             Intent intent = new Intent(getApplicationContext(), StudentsOnCourseActivity.class);
-            intent.putExtra("courseTitle", course.getTitle());
+            intent.putExtra("courseId", course.getId());
             startActivity(intent);
         });
     }
@@ -55,7 +58,7 @@ public class EditCourseActivity extends AppCompatActivity {
                 return;
             }
             Intent intent = new Intent(this, PlanningActivity.class);
-            intent.putExtra("courseTitle", course.getTitle());
+            intent.putExtra("courseId", course.getId());
             startActivity(intent);
         });
     }

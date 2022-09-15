@@ -20,4 +20,9 @@
     <string name="error">Error occurred</string>
     <string name="noStudents">There are no students</string>
     <string name="errorStudentNowIs">The student is in list now</string>
+    <string name="editCourse">Edit course</string>
+    <string name="createCourse">Create course</string>
+    <string name="studentsOnCourse">Students on course</string>
+    <string name="planning">Calendar planning</string>
+    <string name="enterThemaPlease">Enter thema please</string>
 </resources>

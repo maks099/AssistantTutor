@@ -1,7 +1,10 @@
 package com.example.assistanttutor;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
+import android.text.InputType;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +12,7 @@ import android.os.Bundle;
 import com.example.assistanttutor.database.DBManager;
 import com.example.assistanttutor.database.DBSingletone;
 import com.example.assistanttutor.database.objects.MyDate;
+import com.example.assistanttutor.database.objects.Student;
 import com.example.assistanttutor.databinding.ActivityPlanningBinding;
 
 import java.util.ArrayList;
@@ -20,7 +24,7 @@ public class PlanningActivity extends AppCompatActivity {
     private ActivityPlanningBinding binding;
     private ArrayAdapter<String> adapter;
     private DBManager db;
-    private String courseTitle;
+    private int courseId;
     private int itemPos = -1;
     private ArrayList<MyDate> dates;
 
@@ -30,9 +34,9 @@ public class PlanningActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityPlanningBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        setTitle(getString(R.string.planning));
         db = DBSingletone.getInstance(getApplicationContext()).getDbManager();
-        courseTitle = getIntent().getStringExtra("courseTitle");
+        courseId = getIntent().getIntExtra("courseId", -1);
         adapter = new ArrayAdapter<>(this, R.layout.text_view_list_item);
 
         fetchData();
@@ -61,13 +65,12 @@ public class PlanningActivity extends AppCompatActivity {
             do{
                 MyDate myDate = new MyDate(
                         cursor.getInt(0),
-                        courseTitle,
-                        cursor.getString(2));
+                        courseId,
+                        cursor.getString(3));
                 dates.add(myDate);
-                adapter.add(myDate.getDate());
+                adapter.add(myDate.getDate() + " - " + cursor.getString(2));
             } while (cursor.moveToNext());
         }
-        System.out.println(dates.size() + " /////////////////");
         binding.lstDates.setAdapter(adapter);
     }
 
@@ -103,12 +106,36 @@ public class PlanningActivity extends AppCompatActivity {
                     }
 
                     if(!duplicate) {
-                        int newDateId = (int) db.addDateToCourse(courseTitle, newDate);
-                        if(newDateId != -1){
-                            dates.add(new MyDate(newDateId, courseTitle, newDate));
-                            adapter.add(newDate);
-                            binding.lstDates.setAdapter(adapter);
-                        }
+                        AlertDialog.Builder dialog = new AlertDialog.Builder(PlanningActivity.this);
+                        dialog.setTitle(getString(R.string.enterThemaPlease));
+                        final EditText input = new EditText(getApplicationContext());
+                        input.setInputType(InputType.TYPE_CLASS_TEXT);
+                        dialog.setView(input);
+                        dialog.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String theme = input.getText().toString().trim();
+                                if(theme.length() != 0){
+                                    int newDateId = (int) db.addDateToCourse(courseId, newDate, theme);
+                                    if(newDateId != -1){
+                                        dates.add(new MyDate(newDateId, courseId, newDate));
+                                        adapter.add(newDate + " - " + theme);
+                                        binding.lstDates.setAdapter(adapter);
+                                    }
+                                } else Toast.makeText(getApplicationContext(), getString(R.string.enterThemaPlease), Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+                        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+                        dialog.show();
+
                     }
                 }
             };

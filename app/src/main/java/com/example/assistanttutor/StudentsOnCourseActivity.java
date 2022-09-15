@@ -3,9 +3,7 @@ package com.example.assistanttutor;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
-import android.text.InputType;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +11,6 @@ import android.os.Bundle;
 import com.example.assistanttutor.adapters.StudentArrayAdapter2;
 import com.example.assistanttutor.database.DBManager;
 import com.example.assistanttutor.database.DBSingletone;
-import com.example.assistanttutor.database.objects.MyDate;
-import com.example.assistanttutor.database.objects.Student;
 import com.example.assistanttutor.databinding.ActivityStudentsOnCourseBinding;
 
 import java.util.ArrayList;
@@ -24,7 +20,7 @@ public class StudentsOnCourseActivity extends AppCompatActivity {
     private ArrayList<String> allStudents, studentsOnCourse;
 
     private DBManager db;
-    private String courseTitle;
+    private int courseId;
 
     private ArrayAdapter<String> adapter;
 
@@ -35,9 +31,9 @@ public class StudentsOnCourseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityStudentsOnCourseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setTitle(getString(R.string.studentsOnCourse));
 
-
-        courseTitle = getIntent().getStringExtra("courseTitle");
+        courseId = getIntent().getIntExtra("courseId", -1);
         db = DBSingletone.getInstance(getApplicationContext()).getDbManager();
         fetchStudentsOnCourse();
 
@@ -45,7 +41,7 @@ public class StudentsOnCourseActivity extends AppCompatActivity {
         adapter = new StudentArrayAdapter2(
                 getApplicationContext(),
                 studentsOnCourse,
-                courseTitle);
+                courseId);
         binding.lstStudentsOnCourse.setAdapter(adapter);
 
         fetchAllStudents();
@@ -77,7 +73,7 @@ public class StudentsOnCourseActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), getString(R.string.errorStudentNowIs), Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    int newStudentId = db.insertStudentToCourse(newStudentName, courseTitle);
+                    int newStudentId = db.insertStudentToCourse(newStudentName, courseId);
                     if(newStudentId != -1){
                         adapter.add(newStudentName);
                         adapter.notifyDataSetChanged();
@@ -111,7 +107,7 @@ public class StudentsOnCourseActivity extends AppCompatActivity {
 
     private void fetchStudentsOnCourse() {
         studentsOnCourse = new ArrayList<>();
-        Cursor cursor = db.fetchStudentsOnCourse(courseTitle);
+        Cursor cursor = db.fetchStudentsOnCourse(courseId);
         if(cursor.moveToFirst()){
             do{
                 studentsOnCourse.add(cursor.getString(1));

@@ -57,15 +57,16 @@ public class DBManager {
         return database.delete("courses", "_id = ?", new String[]{courseId + ""});
     }
 
-    public long addDateToCourse(String courseTitle, String newDate) {
+    public long addDateToCourse(int courseId, String newDate, String theme) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("title", courseTitle);
+        contentValues.put("courseId", courseId);
         contentValues.put("date_", newDate);
+        contentValues.put("theme", theme);
         return database.insert("planning", null, contentValues);
     }
 
     public Cursor fetchDates() {
-        String [] columns = new String[] {"_id", "title", "date_"};
+        String [] columns = new String[] {"_id", "courseId", "theme", "date_"};
         Cursor cursor = database.query("planning", columns, null, null, null, null, "date_");
         if(cursor != null){
             cursor.moveToFirst();
@@ -96,9 +97,9 @@ public class DBManager {
         return (int) database.insert("students", null, contentValues);
     }
 
-    public Cursor fetchStudentsOnCourse(String courseTitle) {
+    public Cursor fetchStudentsOnCourse(int courseId) {
         String [] columns = new String[] {"_id", "name"};
-        Cursor cursor = database.query("records", columns, "title = ?", new String[]{courseTitle}, null, null, null);
+        Cursor cursor = database.query("records", columns, "courseId = ?", new String[]{courseId + ""}, null, null, null);
         if(cursor != null){
             cursor.moveToFirst();
         }
@@ -106,13 +107,13 @@ public class DBManager {
     }
 
 
-    public int removeStudentOnCourse(String studentName, String courseTitle) {
-        return database.delete("records", "name = ? AND title = ?", new String[]{studentName, courseTitle});
+    public int removeStudentOnCourse(String studentName, int courseId) {
+        return database.delete("records", "name = ? AND courseId = ?", new String[]{studentName, courseId + ""});
     }
 
-    public int insertStudentToCourse(String newStudentName, String courseTitle) {
+    public int insertStudentToCourse(String newStudentName, int courseId) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("title", courseTitle);
+        contentValues.put("courseId", courseId);
         contentValues.put("name", newStudentName);
         return (int) database.insert("records", null, contentValues);
     }

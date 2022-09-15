@@ -2,8 +2,8 @@ package com.example.assistanttutor.database.objects;
 
 public class MyDate {
 
-    private int id;
-    private String title, date;
+    private int id, courseId;
+    private String date;
 
     public int getId() {
         return id;
@@ -13,13 +13,7 @@ public class MyDate {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getDate() {
         return date;
@@ -29,9 +23,18 @@ public class MyDate {
         this.date = date;
     }
 
-    public MyDate(int id, String title, String date) {
+    public MyDate(int id, int courseId, String date) {
         this.id = id;
-        this.title = title;
+        this.courseId = courseId;
         this.date = date;
+    }
+
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 }

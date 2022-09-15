@@ -12,20 +12,19 @@ import androidx.annotation.Nullable;
 import com.example.assistanttutor.R;
 import com.example.assistanttutor.database.DBManager;
 import com.example.assistanttutor.database.DBSingletone;
-import com.example.assistanttutor.database.objects.Student;
 
 import java.util.ArrayList;
 
 public class StudentArrayAdapter2 extends ArrayAdapter<String> {
 
     private ArrayList<String> students;
-    private String courseTitle;
+    private int courseId;
 
     private DBManager db;
 
-    public StudentArrayAdapter2(@NonNull Context context, ArrayList<String> objects, String courseTitle) {
+    public StudentArrayAdapter2(@NonNull Context context, ArrayList<String> objects, int courseId) {
         super(context, 0, objects);
-        this.courseTitle = courseTitle;
+        this.courseId = courseId;
         this.students = objects;
         db = DBSingletone.getInstance(context).getDbManager();
     }
@@ -43,7 +42,7 @@ public class StudentArrayAdapter2 extends ArrayAdapter<String> {
 
         ImageButton btnDeleteStudent = currentItemView.findViewById(R.id.btnDeleteStudent);
         btnDeleteStudent.setOnClickListener(e -> {
-            int result = db.removeStudentOnCourse(students.get(position), courseTitle);
+            int result = db.removeStudentOnCourse(students.get(position), courseId);
             if(result != -1){
                 notifyDataSetChanged();
                 students.remove(position);
