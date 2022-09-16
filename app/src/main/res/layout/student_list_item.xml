@@ -2,13 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:toolse="http://schemas.android.com/tools"
               xmlns:tools="http://schemas.android.com/apk/res-auto"
               android:orientation="horizontal"
+              android:gravity="center_vertical"
+              android:padding="@dimen/main_wrapper_padding"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/txtStudent"
+        android:textSize="@dimen/largeText"
+        android:padding="@dimen/middle_size_padding"
         android:layout_weight="1"
         toolse:text="text"/>
 
@@ -17,5 +21,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnDeleteStudent"
             android:src="@drawable/ic_delete"
+            android:padding="@dimen/lesson_list_item_sub_padding"
+            android:background="@color/red"
           />
 </LinearLayout>

@@ -7,53 +7,85 @@
         android:layout_height="match_parent"
         tools:context=".EditCourseActivity">
 
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="@string/enterCourseName"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toTopOf="parent" android:id="@+id/textView"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:gravity="center"
+                  android:padding="@dimen/main_wrapper_padding"
+                  android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+                  app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintBottom_toTopOf="@+id/btnSave">
 
-    <EditText android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/edtCourseTitle"
-              android:minWidth="200dp"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/textView" android:minHeight="48dp"/>
-
-
-    <TextView android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="@string/enterCourseDesc"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/edtCourseTitle" android:id="@+id/textView2"/>
-
-    <EditText android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/edtDescription"
-              android:minWidth="200dp"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintStart_toStartOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/textView2" android:minHeight="48dp"/>
-
-    <Button
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:drawableLeft="@drawable/ic_calendar"
-            android:text="@string/calendar"
-            android:id="@+id/btnCalendarPlanning" app:layout_constraintTop_toBottomOf="@+id/edtDescription"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
-
-
-    <Button
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:drawableLeft="@drawable/ic_groups"
-            android:text="@string/students"
-            android:id="@+id/btnStudentsOnCourse" app:layout_constraintTop_toBottomOf="@+id/btnCalendarPlanning"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+            android:padding="@dimen/middle_size_padding"
+            >
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/enterCourseName"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  android:labelFor="@id/edtCourseTitle"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent" android:id="@+id/textView"/>
+
+        <EditText android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/edtCourseTitle"
+                  android:minWidth="200dp"
+                  android:inputType = "text"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/textView" android:minHeight="48dp"/>
+        </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:insetTop="@dimen/middleMarginTop"
+            android:padding="@dimen/middle_size_padding"
+    >
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/enterCourseDesc"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/edtCourseTitle" android:id="@+id/textView2"/>
+
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/edtDescription"
+                  android:minWidth="200dp"
+                  android:lines="2"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/textView2" android:minHeight="48dp"/>
+
+    </LinearLayout>
+
+        <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:drawableLeft="@drawable/ic_calendar"
+                android:text="@string/calendar"
+                android:padding="@dimen/middle_size_padding"
+                android:id="@+id/btnCalendarPlanning" app:layout_constraintTop_toBottomOf="@+id/edtDescription"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                android:insetTop="@dimen/middleMarginTop"/>
+
+
+        <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:drawableLeft="@drawable/ic_groups"
+                android:padding="@dimen/middle_size_padding"
+                android:insetTop="@dimen/middleMarginTop"
+                android:text="@string/students"
+                android:id="@+id/btnStudentsOnCourse" app:layout_constraintTop_toBottomOf="@+id/btnCalendarPlanning"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton android:layout_width="wrap_content"
                                                                            android:layout_height="wrap_content"

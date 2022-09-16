@@ -6,6 +6,8 @@
     <TextView
             android:id="@+id/courseTitle"
             android:text="test"
+            android:layout_gravity="center"
+            android:textSize="@dimen/largeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 </FrameLayout>

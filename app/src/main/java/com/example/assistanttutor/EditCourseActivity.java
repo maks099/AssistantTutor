@@ -26,6 +26,7 @@ public class EditCourseActivity extends AppCompatActivity {
         course = getIntent().getParcelableExtra("course");
         if(course != null){
             courseId = course.getId();
+            System.out.println(courseId + " *******************");
             binding.edtCourseTitle.setText(course.getTitle());
             binding.edtDescription.setText(course.getDescription());
             setTitle(getString(R.string.editCourse));
@@ -45,6 +46,10 @@ public class EditCourseActivity extends AppCompatActivity {
 
     private void onStudentsOnCourse() {
         binding.btnStudentsOnCourse.setOnClickListener(e -> {
+            if(course == null){
+                Toast.makeText(getApplicationContext(), getString(R.string.saveCoursePlease), Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent intent = new Intent(getApplicationContext(), StudentsOnCourseActivity.class);
             intent.putExtra("courseId", course.getId());
             startActivity(intent);
@@ -79,7 +84,7 @@ public class EditCourseActivity extends AppCompatActivity {
                 return;
             }
 
-            Course course = new Course(title, desc, "123");
+            Course course = new Course(title, desc, "");
 
             long result  = courseId == -1
                     ? db.insertCourse(course)

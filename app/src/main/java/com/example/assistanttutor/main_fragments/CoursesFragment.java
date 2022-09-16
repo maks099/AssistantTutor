@@ -69,7 +69,7 @@ public class CoursesFragment extends Fragment {
 
         simpleCursorAdapter = new SimpleCursorAdapter(
                 getContext(),
-                R.layout.simple_list_item,
+                R.layout.course_list_item,
                 cursor,
                 new String[]{"title"},
                 new int[]{R.id.courseTitle},

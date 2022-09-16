@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="main_wrapper_padding">15dp</dimen>
+    <dimen name="lesson_list_item_sub_padding">5dp</dimen>
+    <dimen name="middle_size_padding">10dp</dimen>
+
+    <dimen name="middleMarginTop">15dp</dimen>
+
+    <dimen name="largeText">16sp</dimen>
+</resources>

@@ -5,8 +5,8 @@
     <string name="lessons">Lessons</string>
 
     <string name="emptyList">Empty list</string>
-    <string name="enterCourseName">Enter course name</string>
-    <string name="enterCourseDesc">Enter course description</string>
+    <string name="enterCourseName">Enter course name:</string>
+    <string name="enterCourseDesc">Enter course description:</string>
     <string name="enterTitlePlease">Please, enter title</string>
     <string name="errorCourseAdding">Error occurred - try again</string>
     <string name="saveCoursePlease">Please, save the course</string>
@@ -25,4 +25,14 @@
     <string name="studentsOnCourse">Students on course</string>
     <string name="planning">Calendar planning</string>
     <string name="enterThemaPlease">Enter thema please</string>
+    <string name="course">Course</string>
+    <string name="student">Student:</string>
+    <string name="theme">Theme: </string>
+    <string name="score">Score: </string>
+    <string name="lesson">Lesson</string>
+    <string name="cost">Cost: </string>
+    <string name="addCoursePlease">Add new course please</string>
+    <string name="addStudentToCourse">Pin a student on a course</string>
+    <string name="addThemes">Plese, add at least one item to calendar plan of this course</string>
+    <string name="avgScore">"Average score: "</string>
 </resources>

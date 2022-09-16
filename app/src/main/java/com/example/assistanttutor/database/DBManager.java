@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import com.example.assistanttutor.database.objects.Course;
+import com.example.assistanttutor.database.objects.Lesson;
 
 public class DBManager {
 
@@ -65,9 +66,9 @@ public class DBManager {
         return database.insert("planning", null, contentValues);
     }
 
-    public Cursor fetchDates() {
+    public Cursor fetchDates(int courseId) {
         String [] columns = new String[] {"_id", "courseId", "theme", "date_"};
-        Cursor cursor = database.query("planning", columns, null, null, null, null, "date_");
+        Cursor cursor = database.query("planning", columns, "courseId = ?", new String[]{courseId+""}, null, null, "date_");
         if(cursor != null){
             cursor.moveToFirst();
         }
@@ -116,5 +117,34 @@ public class DBManager {
         contentValues.put("courseId", courseId);
         contentValues.put("name", newStudentName);
         return (int) database.insert("records", null, contentValues);
+    }
+
+    public Cursor fetchThemes(int courseId) {
+        String [] columns = new String[] {"theme"};
+        Cursor cursor = database.query("planning", columns, "courseId = ?", new String[]{courseId + ""}, "theme", null, null);
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    public int insertLesson(Lesson lesson) {
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("courseId", lesson.getCourseId());
+        contentValues.put("name", lesson.getName());
+        contentValues.put("theme", lesson.getTheme());
+        contentValues.put("cost", lesson.getCost());
+        contentValues.put("score", lesson.getScore());
+        contentValues.put("date_", lesson.getDate());
+        return (int) database.insert("lessons", null, contentValues);
+    }
+
+    public Cursor fetchLessons() {
+        String [] columns = new String[] {"courseId", "cost", "score", "name", "theme", "date_"};
+        Cursor cursor = database.query("lessons", columns, null, null, null, null, "date_ DESC");
+        if(cursor != null){
+            cursor.moveToFirst();
+        }
+        return cursor;
     }
 }

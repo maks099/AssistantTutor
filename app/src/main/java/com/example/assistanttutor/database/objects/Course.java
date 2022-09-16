@@ -38,6 +38,11 @@ public class Course implements Parcelable {
         this.planning = planning;
     }
 
+    public Course(String title, int id) {
+        this.title = title;
+        this.id = id;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }

@@ -12,7 +12,6 @@ import android.os.Bundle;
 import com.example.assistanttutor.database.DBManager;
 import com.example.assistanttutor.database.DBSingletone;
 import com.example.assistanttutor.database.objects.MyDate;
-import com.example.assistanttutor.database.objects.Student;
 import com.example.assistanttutor.databinding.ActivityPlanningBinding;
 
 import java.util.ArrayList;
@@ -37,7 +36,7 @@ public class PlanningActivity extends AppCompatActivity {
         setTitle(getString(R.string.planning));
         db = DBSingletone.getInstance(getApplicationContext()).getDbManager();
         courseId = getIntent().getIntExtra("courseId", -1);
-        adapter = new ArrayAdapter<>(this, R.layout.text_view_list_item);
+        adapter = new ArrayAdapter<>(this, R.layout.date_list_item);
 
         fetchData();
         listPreparing();
@@ -60,7 +59,7 @@ public class PlanningActivity extends AppCompatActivity {
 
     private void fetchData() {
         dates = new ArrayList<>();
-        Cursor cursor = db.fetchDates();
+        Cursor cursor = db.fetchDates(courseId);
         if(cursor.moveToFirst()){
             do{
                 MyDate myDate = new MyDate(
