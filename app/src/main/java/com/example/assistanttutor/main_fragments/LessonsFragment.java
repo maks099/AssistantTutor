@@ -1,14 +1,23 @@
 package com.example.assistanttutor.main_fragments;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +30,18 @@ import com.example.assistanttutor.database.DBSingletone;
 import com.example.assistanttutor.database.objects.Course;
 import com.example.assistanttutor.database.objects.Lesson;
 import com.example.assistanttutor.databinding.FragmentLessonsBinding;
+import com.example.assistanttutor.helpers.PdfHelper;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import org.jetbrains.annotations.NotNull;
 
+
+import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class LessonsFragment extends Fragment {
@@ -32,7 +50,7 @@ public class LessonsFragment extends Fragment {
     private DBManager db;
     private ArrayList<Course> courses;
     private ArrayList<String> studentsNames, themes;
-    private ArrayList<Lesson> lessons;
+    private ArrayList<Lesson> lessons, sortedLessons;
 
     private LessonArrayAdapter adapter;
 
@@ -51,12 +69,49 @@ public class LessonsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         db = DBSingletone.getInstance(getContext()).getDbManager();
 
-
-
         onCoursesSpinner();
         setSimpleSpinnerListener(binding.spnStudents);
         onAddLecture();
+        onPrintReport();
     }
+
+    private void onPrintReport() {
+        binding.btnPrintReport.setOnClickListener(e -> {
+            int permission = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if(sortedLessons.size() == 0){
+                Toast.makeText(getContext(), getString(R.string.nothingToSave), Toast.LENGTH_SHORT).show();
+            }
+            else if(permission != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        1
+                        );
+            }
+            else{
+                try {
+                    PdfHelper pdfHelper = new PdfHelper(getContext(), getActivity());
+                    pdfHelper.createPdf(sortedLessons, binding.spnCourses.getSelectedItem().toString());
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                } catch (DocumentException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
+    }
+
+    File myFile;
+
+
+
+
+
+
+
+
 
     @Override
     public void onResume() {
@@ -79,7 +134,7 @@ public class LessonsFragment extends Fragment {
 
 
     private void showList() {
-        ArrayList<Lesson> sortedLessons = new ArrayList<>();
+        sortedLessons = new ArrayList<>();
         int allScore = 0;
         for(Lesson lesson : lessons){
             if(

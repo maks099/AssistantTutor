@@ -35,4 +35,13 @@
     <string name="addStudentToCourse">Pin a student on a course</string>
     <string name="addThemes">Plese, add at least one item to calendar plan of this course</string>
     <string name="avgScore">"Average score: "</string>
+    <string name="nothingToSave">There are nothing to save</string>
+    <string name="send">Send</string>
+    <string name="preview">Preview</string>
+    <string name="savedWhatNext">Report saved. What next?</string>
+    <string name="report">REPORT</string>
+    <string name="date">Date</string>
+    <string name="theme2">Theme</string>
+    <string name="score2">Score</string>
+    <string name="cost2">Cost</string>
 </resources>
