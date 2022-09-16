@@ -22,6 +22,7 @@ public class DBManager {
     public DBManager open() throws SQLException{
         dbHelper = new DatabaseHelper(context);
         database = dbHelper.getWritableDatabase();
+        database.execSQL("PRAGMA foreign_keys = ON");
         return this;
     }
 

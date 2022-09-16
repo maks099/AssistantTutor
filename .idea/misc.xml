@@ -5,9 +5,10 @@
       <map>
         <entry key="app/src/main/res/drawable/list_item_selector.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/activity_add_lesson.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_edit_course.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_edit_course.xml" value="0.17134831460674158" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_planning.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_planning.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_students_on_course.xml" value="0.1" />
         <entry key="app/src/main/res/layout/date_list_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.18" />

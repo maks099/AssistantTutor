@@ -12,11 +12,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table courses (_id integer primary key autoincrement, title TEXT unique, description TEXT, planning TEXT)");
-        db.execSQL("create table students (_id integer primary key autoincrement, name TEXT unique)");
-        db.execSQL("create table lessons (_id integer primary key autoincrement, courseId integer, name Text, theme Text, cost integer, score integer, date_ Text)");
-        db.execSQL("create table records (_id integer primary key autoincrement, courseId integer, name Text)");
-        db.execSQL("create table planning (_id integer primary key autoincrement, courseId integer, theme TEXT, date_ Date)");
+        db.execSQL("create table courses " +
+                "(_id integer primary key autoincrement, title TEXT unique, description TEXT, planning TEXT)");
+
+        db.execSQL("create table students " +
+                "(_id integer primary key autoincrement, name TEXT unique)");
+
+        db.execSQL("create table lessons " +
+                "(_id integer primary key autoincrement, " +
+                "courseId integer, " +
+                "name Text, " +
+                "theme Text, " +
+                "cost integer, " +
+                "score integer, " +
+                "date_ Text, " +
+                "FOREIGN KEY (courseId) REFERENCES courses (_id) ON UPDATE RESTRICT ON DELETE RESTRICT, " +
+                "FOREIGN KEY (name) REFERENCES students (name) ON UPDATE RESTRICT ON DELETE RESTRICT)");
+
+        db.execSQL("create table records " +
+                "(_id integer primary key autoincrement, " +
+                "courseId integer, " +
+                "name Text, " +
+                "FOREIGN KEY (courseId) REFERENCES courses (_id) ON UPDATE RESTRICT ON DELETE RESTRICT, " +
+                "FOREIGN KEY (name) REFERENCES students (name) ON UPDATE RESTRICT ON DELETE RESTRICT)");
+
+        db.execSQL("create table planning " +
+                "(_id integer primary key autoincrement, courseId integer, theme TEXT, date_ Date, " +
+                "FOREIGN KEY (courseId) REFERENCES courses (_id) ON UPDATE RESTRICT ON DELETE RESTRICT)");
     }
 
     @Override

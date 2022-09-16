@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AssistantTutor</string>
+    <string name="app_name">Assistant Tutor</string>
     <string name="courses">Courses</string>
     <string name="students">Students</string>
     <string name="lessons">Lessons</string>
@@ -27,10 +27,10 @@
     <string name="enterThemaPlease">Enter thema please</string>
     <string name="course">Course</string>
     <string name="student">Student:</string>
-    <string name="theme">Theme: </string>
-    <string name="score">Score: </string>
+    <string name="theme">Theme:</string>
+    <string name="score">Score:</string>
     <string name="lesson">Lesson</string>
-    <string name="cost">Cost: </string>
+    <string name="cost">Cost:</string>
     <string name="addCoursePlease">Add new course please</string>
     <string name="addStudentToCourse">Pin a student on a course</string>
     <string name="addThemes">Plese, add at least one item to calendar plan of this course</string>
@@ -44,4 +44,11 @@
     <string name="theme2">Theme</string>
     <string name="score2">Score</string>
     <string name="cost2">Cost</string>
+    <string name="enterYourLogin">Enter login:</string>
+    <string name="enterYourPass">Enter password:</string>
+    <string name="registration">Registration</string>
+    <string name="authorization">Authorization</string>
+    <string name="inputLogin">Input your login, please</string>
+    <string name="inputPassword">Input you password, please</string>
+    <string name="checkCredentials">Login or password invalid, try again</string>
 </resources>

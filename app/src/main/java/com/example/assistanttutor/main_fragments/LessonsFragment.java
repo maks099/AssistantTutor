@@ -78,7 +78,7 @@ public class LessonsFragment extends Fragment {
     private void onPrintReport() {
         binding.btnPrintReport.setOnClickListener(e -> {
             int permission = ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            if(sortedLessons.size() == 0){
+            if(sortedLessons == null || sortedLessons.size() == 0){
                 Toast.makeText(getContext(), getString(R.string.nothingToSave), Toast.LENGTH_SHORT).show();
             }
             else if(permission != PackageManager.PERMISSION_GRANTED){
