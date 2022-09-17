@@ -15,6 +15,7 @@
             android:theme="@style/Theme.AssistantTutor">
         <activity
                 android:name=".LoginActivity"
+                android:screenOrientation="portrait"
                 android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN"/>
@@ -23,18 +24,25 @@
         </activity>
         <activity
                 android:name=".AddLessonActivity"
+                android:screenOrientation="portrait"
+
                 android:exported="true"/>
         <activity
                 android:name=".StudentsOnCourseActivity"
+                android:screenOrientation="portrait"
+
                 android:exported="true"/>
         <activity
                 android:name=".PlanningActivity"
+                android:screenOrientation="portrait"
                 android:exported="true"/>
         <activity
                 android:name=".EditCourseActivity"
+                android:screenOrientation="portrait"
                 android:exported="true"/>
         <activity
                 android:name=".MainActivity"
+                android:screenOrientation="portrait"
                 android:exported="true">
 
         </activity>
