@@ -52,7 +52,7 @@ public class PdfHelper {
         mainTitle.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(mainTitle);
 
-        Paragraph course = new Paragraph(context.getString(R.string.course) + " " + courseName, f1);
+        Paragraph course = new Paragraph(context.getString(R.string.course) + ": " + courseName, f1);
         course.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(course);
 

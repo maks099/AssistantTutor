@@ -71,8 +71,8 @@ public class CoursesFragment extends Fragment {
                 getContext(),
                 R.layout.course_list_item,
                 cursor,
-                new String[]{"title"},
-                new int[]{R.id.courseTitle},
+                new String[]{"title", "description"},
+                new int[]{R.id.courseTitle, R.id.courseDescription},
                 0
         );
 

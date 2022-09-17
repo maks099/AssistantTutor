@@ -63,10 +63,6 @@ public class AddLessonActivity extends AppCompatActivity {
 
             if(db.insertLesson(lesson) != -1){
                 onBackPressed();
-            } else {
-                Toast
-                        .makeText(getApplicationContext(), getString(R.string.error), Toast.LENGTH_SHORT)
-                        .show();
             }
         });
     }

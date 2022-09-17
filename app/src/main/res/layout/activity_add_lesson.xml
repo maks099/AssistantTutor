@@ -57,7 +57,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/lesson_list_item_sub_padding"
+                android:padding="@dimen/small_size_padding"
                 android:textSize="@dimen/largeText"
                 android:text="@string/score"/>
         <Spinner
@@ -78,7 +78,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/lesson_list_item_sub_padding"
+                android:padding="@dimen/small_size_padding"
                 android:textSize="@dimen/largeText"
                 android:text="@string/cost"/>
 

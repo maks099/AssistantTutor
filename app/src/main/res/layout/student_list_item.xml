@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnDeleteStudent"
             android:src="@drawable/ic_delete"
-            android:padding="@dimen/lesson_list_item_sub_padding"
+            android:padding="@dimen/small_size_padding"
             android:background="@color/red"
           />
 </LinearLayout>

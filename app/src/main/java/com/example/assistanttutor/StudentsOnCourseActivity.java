@@ -78,7 +78,6 @@ public class StudentsOnCourseActivity extends AppCompatActivity {
                         adapter.add(newStudentName);
                         adapter.notifyDataSetChanged();
                     }
-                    else Toast.makeText(getApplicationContext(), getString(R.string.error), Toast.LENGTH_SHORT).show();
 
                 }
             });

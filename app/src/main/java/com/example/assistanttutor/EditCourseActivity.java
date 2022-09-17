@@ -15,7 +15,7 @@ public class EditCourseActivity extends AppCompatActivity {
     private ActivityEditCourseBinding binding;
     private int courseId = -1;
     private Course course;
-    DBManager db;
+    private DBManager db;
 
 
     @Override
@@ -94,9 +94,7 @@ public class EditCourseActivity extends AppCompatActivity {
     }
 
     private void checkResult(long result) {
-        if(result == -1){
-            Toast.makeText(getApplicationContext(), getString(R.string.errorCourseAdding), Toast.LENGTH_SHORT).show();
-        } else {
+        if (result != -1) {
             onBackPressed();
         }
     }

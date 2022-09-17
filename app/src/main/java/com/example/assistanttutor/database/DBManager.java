@@ -5,8 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 import com.example.assistanttutor.database.objects.Course;
 import com.example.assistanttutor.database.objects.Lesson;
+
+import java.util.concurrent.ExecutionException;
 
 public class DBManager {
 
@@ -31,11 +34,16 @@ public class DBManager {
     }
 
     public long insertCourse(Course course){
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("title", course.getTitle());
-        contentValues.put("description", course.getDescription());
-        contentValues.put("planning", course.getPlanning());
-        return database.insert("courses", null, contentValues);
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("title", course.getTitle());
+            contentValues.put("description", course.getDescription());
+            contentValues.put("planning", course.getPlanning());
+            return database.insert("courses", null, contentValues);
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return  -1;
+        }
     }
 
     public Cursor fetchCourses(){
@@ -48,23 +56,38 @@ public class DBManager {
     }
 
     public long updateCourse(Course course, int courseId) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("title", course.getTitle());
-        contentValues.put("description", course.getDescription());
-        contentValues.put("planning", course.getPlanning());
-        return database.update("courses",  contentValues, "_id = ?", new String[]{courseId + ""});
-    }
+        try{
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("title", course.getTitle());
+            contentValues.put("description", course.getDescription());
+            contentValues.put("planning", course.getPlanning());
+            return database.update("courses",  contentValues, "_id = ?", new String[]{courseId + ""});
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return  -1;
+        }
+   }
 
     public long removeCourse(int courseId) {
-        return database.delete("courses", "_id = ?", new String[]{courseId + ""});
+        try{
+            return database.delete("courses", "_id = ?", new String[]{courseId + ""});
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return  -1;
+        }
     }
 
     public long addDateToCourse(int courseId, String newDate, String theme) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("courseId", courseId);
-        contentValues.put("date_", newDate);
-        contentValues.put("theme", theme);
-        return database.insert("planning", null, contentValues);
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("courseId", courseId);
+            contentValues.put("date_", newDate);
+            contentValues.put("theme", theme);
+            return database.insert("planning", null, contentValues);
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return  -1;
+        }
     }
 
     public Cursor fetchDates(int courseId) {
@@ -77,11 +100,21 @@ public class DBManager {
     }
 
     public long removeDate(int id) {
-        return database.delete("planning", "_id = ?", new String[]{id + ""});
+        try{
+            return database.delete("planning", "_id = ?", new String[]{id + ""});
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return -1;
+        }
     }
 
     public int removeStudent(int id) {
-        return database.delete("students", "_id = ?", new String[]{id + ""});
+        try{
+            return database.delete("students", "_id = ?", new String[]{id + ""});
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return -1;
+        }
     }
 
     public Cursor fetchStudents() {
@@ -94,9 +127,14 @@ public class DBManager {
     }
 
     public int insertStudent(String newStudentName) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("name", newStudentName);
-        return (int) database.insert("students", null, contentValues);
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("name", newStudentName);
+            return (int) database.insert("students", null, contentValues);
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return -1;
+        }
     }
 
     public Cursor fetchStudentsOnCourse(int courseId) {
@@ -110,14 +148,24 @@ public class DBManager {
 
 
     public int removeStudentOnCourse(String studentName, int courseId) {
-        return database.delete("records", "name = ? AND courseId = ?", new String[]{studentName, courseId + ""});
+        try {
+            return database.delete("records", "name = ? AND courseId = ?", new String[]{studentName, courseId + ""});
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return -1;
+        }
     }
 
     public int insertStudentToCourse(String newStudentName, int courseId) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("courseId", courseId);
-        contentValues.put("name", newStudentName);
-        return (int) database.insert("records", null, contentValues);
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("courseId", courseId);
+            contentValues.put("name", newStudentName);
+            return (int) database.insert("records", null, contentValues);
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return -1;
+        }
     }
 
     public Cursor fetchThemes(int courseId) {
@@ -130,14 +178,19 @@ public class DBManager {
     }
 
     public int insertLesson(Lesson lesson) {
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("courseId", lesson.getCourseId());
-        contentValues.put("name", lesson.getName());
-        contentValues.put("theme", lesson.getTheme());
-        contentValues.put("cost", lesson.getCost());
-        contentValues.put("score", lesson.getScore());
-        contentValues.put("date_", lesson.getDate());
-        return (int) database.insert("lessons", null, contentValues);
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("courseId", lesson.getCourseId());
+            contentValues.put("name", lesson.getName());
+            contentValues.put("theme", lesson.getTheme());
+            contentValues.put("cost", lesson.getCost());
+            contentValues.put("score", lesson.getScore());
+            contentValues.put("date_", lesson.getDate());
+            return (int) database.insert("lessons", null, contentValues);
+        } catch (Exception ex){
+            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            return -1;
+        }
     }
 
     public Cursor fetchLessons() {

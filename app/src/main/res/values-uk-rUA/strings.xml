@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Помічник Репетитора</string>
+
+    <string name="courses">Курси</string>
+    <string name="students">Студенти</string>
+    <string name="lessons">Заняття</string>
+
+    <string name="emptyList">Список пустий</string>
+    <string name="enterCourseName">Введіть назву курсу:</string>
+    <string name="enterCourseDesc">Введіть опис курсу:</string>
+    <string name="enterTitlePlease">Будь ласка, введіть назву</string>
+    <string name="errorCourseAdding">Помилка</string>
+    <string name="saveCoursePlease">Будь ласка, збережіть курс</string>
+    <string name="duplicateDate">"Ця дата вже є у списку"</string>
+    <string name="pickDatePlease">Виберіть дату для видалення</string>
+    <string name="enterNewStudent">Введіть ПІБ нового студента:</string>
+    <string name="yes">Так</string>
+    <string name="enterStudentNamePlease">Будь ласка, введіть ПІБ нового студента</string>
+    <string name="cancel">Відміна</string>
+    <string name="calendar">Календарний план</string>
+    <string name="error">Помилка</string>
+    <string name="noStudents">Студенти відсутні</string>
+    <string name="errorStudentNowIs">Цей студент вже є у списку</string>
+    <string name="editCourse">Редагувати курс</string>
+    <string name="createCourse">Додати курс</string>
+    <string name="studentsOnCourse">Студенти на курсі</string>
+    <string name="planning">Календарне планування</string>
+    <string name="enterThemaPlease">Будь ласка, введіть тему</string>
+    <string name="course">Курс</string>
+    <string name="student">Студент:</string>
+    <string name="theme">Тема:</string>
+    <string name="score">Оцінка:</string>
+    <string name="lesson">Заняття</string>
+    <string name="cost">Оплата:</string>
+    <string name="addCoursePlease">Будь ласка, додайте новий курс</string>
+    <string name="addStudentToCourse">Закріпіть студента за курсом</string>
+    <string name="addThemes">Будь ласка, додайте бодай одне значення до календарного плану курсу</string>
+    <string name="avgScore">"Середня оцінка: "</string>
+    <string name="nothingToSave">Дані для генерації звіту відсутні</string>
+    <string name="send">Відправити</string>
+    <string name="preview">Переглянути</string>
+    <string name="savedWhatNext">Звіт збережено в папку Documents. Наступна дія?</string>
+    <string name="report">ЗВІТ</string>
+    <string name="date">Дата</string>
+    <string name="theme2">Тема</string>
+    <string name="score2">Оцінка</string>
+    <string name="cost2">Оплата</string>
+    <string name="enterYourLogin">Введіть логін:</string>
+    <string name="enterYourPass">Введіть пароль:</string>
+    <string name="registration">Реєстрація</string>
+    <string name="authorization">Авторизація</string>
+    <string name="inputLogin">Будь ласка, введіть логін</string>
+    <string name="inputPassword">Будь ласка, введіть пароль</string>
+    <string name="checkCredentials">Логін або пароль невірні</string>
+</resources>
